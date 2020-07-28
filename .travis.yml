@@ -8,18 +8,6 @@ before_install:
         - archiveArtifacts artifacts: 'dist/trainSchedule.zip'
     
 script:
-        - docker run -e CI=true hm3cheun/docker-react npm run test
+        - docker build hm3cheun8383/cicd-k8 .
 
-deploy:
-    edge: true
-    provider: elasticbeanstalk
-    region: "us-east-1"
-    app: "react-docker"
-    env: "ReactDocker-env"
-    bucket_name: "elasticbeanstalk-us-east-1-831687209203"
-    bucket_path: "react-docker"
-    on:
-        branch: master
-    access_key_id: $AWS_ACCESS_KEY
-    secret_access_key:
-        secure: "$AWS_SECRET_KEY"
+
